@@ -1,0 +1,15 @@
+<launch>
+
+    <!-- Launch Camera Publisher Node -->
+    <node pkg="motor_control" type="camera_publisher.py" name="camera_publisher" output="screen" />
+
+    <!-- Launch Object Detection Node -->
+    <node pkg="motor_control" type="object_detection.py" name="object_detection" output="screen" />
+
+    <!-- Launch RQT Image viwer to see streams -->
+    <node pkg="rqt_image_view" type="rqt_image_view" name="image_viewer" />
+    
+    <!-- Launch Motor Control Node -->
+    <node pkg="motor_control" type="motor_control.py" name="motor_control" output="screen" />
+
+</launch>
