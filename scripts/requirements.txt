@@ -1,0 +1,4 @@
+cv_bridge==1.16.2
+numpy==1.17.4
+pymongo==4.3.3
+

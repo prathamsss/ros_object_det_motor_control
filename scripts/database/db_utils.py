@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 
+import os
 from pymongo import MongoClient
 import urllib.parse
 import argparse
@@ -79,12 +80,15 @@ if __name__ == '__main__':
         mongo.delete_all_data()
     else:
         # Add data to database
-        rtsp_link_1 = "/home/pratham/catkin_ws/src/motor_control/scripts/database/video/1.mp4"
+        directory = str(os.path.dirname(os.path.realpath(__file__)))
+        rtsp_link_1 = os.path.join(directory, "video/1.mp4")
         id_1 = 1
 
-        rtsp_link_2 = "/home/pratham/catkin_ws/src/motor_control/scripts/database/video/2.mp4"
+        rtsp_link_2 = os.path.join(directory ,"video/2.mp4")
         id_2 = 2
 
+
+        print("=====>",rtsp_link_1)
         # Here we Insert two video rtsp link / video file path.
         mongo.insert_data({"rtsp_link": (rtsp_link_1), "cam_id": id_1})
         mongo.insert_data({"rtsp_link": (rtsp_link_2), "cam_id": id_2})
