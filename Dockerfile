@@ -11,6 +11,9 @@ RUN apt-get update && apt-get install wget
 RUN apt-get update && apt-get install -y git
 
 # Create a Catkin workspace and clone project repos
+
+
+
 RUN source /opt/ros/$ROS_DISTRO/setup.bash \
  && mkdir -p /catkin_ws/src \
  && cd /catkin_ws/src \
@@ -27,4 +30,5 @@ RUN source /opt/ros/$ROS_DISTRO/setup.bash \
 
 # Set the working folder at startup
 WORKDIR /catkin_ws
-ENTRYPOINT [ "/entrypoint.sh" ]
+RUN chmod +x src/ros_object_det_motor_control/entrypoint.sh
+ENTRYPOINT [ "src/ros_object_det_motor_control/entrypoint.sh" ]
