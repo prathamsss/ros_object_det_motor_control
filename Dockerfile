@@ -10,19 +10,21 @@ RUN apt-get update && \
 RUN apt-get update && apt-get install wget
 RUN apt-get update && apt-get install -y git
 
-# Make a ROS Workspace
+# Create a Catkin workspace and clone project repos
 RUN source /opt/ros/$ROS_DISTRO/setup.bash \
  && mkdir -p /catkin_ws/src \
- && cd /catkin_ws/src 
-# NOW GET OUR PROJECT HERE!
+ && cd /catkin_ws/src \
+ && catkin_init_workspace \
+ && git clone https://github.com/prathamsss/ros_object_det_motor_control.git \
+ && pip3 install -r ros_object_det_motor_control/scripts/requirements.txt
 
 # Build the Catkin workspace and ensure it's sourced
 RUN source /opt/ros/$ROS_DISTRO/setup.bash \
  && cd catkin_ws \
  && catkin_make
 
-RUN echo "source /turtlebot3_ws/devel/setup.bash" >> ~/.bashrc
+
 
 # Set the working folder at startup
 WORKDIR /catkin_ws
-
+ENTRYPOINT [ "/entrypoint.sh" ]
