@@ -1,24 +1,28 @@
 FROM ros:noetic-perception-focal
+RUN rm /bin/sh && ln -s /bin/bash /bin/sh
 
-WORKDIR /catkin_ws
 
-COPY . /catkin_ws
-
+# Update and install required things.
 RUN apt-get update && \
     apt-get install -y python3-pip && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install -r /catkin_ws/requirements.txt
+RUN apt-get update && apt-get install wget
+RUN apt-get update && apt-get install -y git
 
-ENV ROS_MASTER_URI=http://localhost:11311
+# Make a ROS Workspace
+RUN source /opt/ros/$ROS_DISTRO/setup.bash \
+ && mkdir -p /catkin_ws/src \
+ && cd /catkin_ws/src 
+# NOW GET OUR PROJECT HERE!
 
+# Build the Catkin workspace and ensure it's sourced
+RUN source /opt/ros/$ROS_DISTRO/setup.bash \
+ && cd catkin_ws \
+ && catkin_make
 
-CMD [ "rosrun" "motor_control" "camera_publisher.py" ]
+RUN echo "source /turtlebot3_ws/devel/setup.bash" >> ~/.bashrc
 
-
-docker run -it \
-   --network="host" \
-   --env="ROS_IP"=$ROS_IP \
-   --env="ROS_MASTER_URI"=$ROS_MASTER_URI \
-   ros:noetic-perception-focal
+# Set the working folder at startup
+WORKDIR /catkin_ws
 
