@@ -25,10 +25,19 @@ This is a ROS node for controlling a motor based on object detection. It works a
    1. build docker
    
           docker build -t my_dock .
-   2. start the docker:
+          
+   2. Start roscore in your local machine:
+   
+          roscore
+          
+   
+   3. start the docker:
 
           docker run -it  --network="host" --env="ROS_IP"=$ROS_IP  --env="ROS_MASTER_URI"=$ROS_MASTER_URI my_dock roslaunch motor_control main.launch
+
+   4. To Visualise these videos. Start rqt image viewer in local machine:
    
+          rqt_image_view 
 
 ### Usage:
 
