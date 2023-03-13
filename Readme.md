@@ -50,6 +50,9 @@ This is a ROS node for controlling a motor based on object detection. It works a
  ### Note:
  - Instead of real RTSP links, video file path in MongoDB database are been used.
  - Output should be like when man walks in frame - Motor status is OFF else ON (when no man in image).
+ - For more technical details please look at report.pdf
+
+
  ### Architectring.
  
 ![Architect](https://raw.githubusercontent.com/username/repository/main/my_image.png)   
