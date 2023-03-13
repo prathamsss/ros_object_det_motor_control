@@ -48,5 +48,4 @@ This is a ROS node for controlling a motor based on object detection. It works a
  
  ### Architectring.
  
- ![Alt Text]([image_url](https://github.com/prathamsss/ros_object_det_motor_control/blob/master/architect.png))
-   
+![Architect](https://raw.githubusercontent.com/username/repository/main/my_image.png)   
