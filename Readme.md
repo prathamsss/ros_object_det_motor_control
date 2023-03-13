@@ -46,6 +46,10 @@ This is a ROS node for controlling a motor based on object detection. It works a
 - object_detection.py : Subscribes to above published streams, performes object detection and publihes it's result to /motor_status topic.
 - motor_control.py : Gets the decision from object detection and sets motor's parameters accordingly.
  
+ 
+ ### Note:
+ - Instead of real RTSP links, video file path in MongoDB database are been used.
+ - Output should be like when man walks in frame - Motor status is OFF else ON (when no man in image).
  ### Architectring.
  
 ![Architect](https://raw.githubusercontent.com/username/repository/main/my_image.png)   
