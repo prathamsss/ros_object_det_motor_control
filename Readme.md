@@ -46,4 +46,7 @@ This is a ROS node for controlling a motor based on object detection. It works a
 - object_detection.py : Subscribes to above published streams, performes object detection and publihes it's result to /motor_status topic.
 - motor_control.py : Gets the decision from object detection and sets motor's parameters accordingly.
  
+ ### Architectring.
+ 
+ ![Alt Text]([image_url](https://github.com/prathamsss/ros_object_det_motor_control/blob/master/architect.png))
    
